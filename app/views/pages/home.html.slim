@@ -1,0 +1,12 @@
+.home
+  .row
+    - @articles.each do |article|
+      .col-sm-4
+        article
+          = link_to article_path(article), class: "thumb" do
+            / = image_tag article.data.thumb
+            .transparent
+            p.title = article.title
+
+  ul.pager
+    li: a href="articles.html" Articles →

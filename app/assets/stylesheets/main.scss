@@ -1,0 +1,165 @@
+/* MAIN STYLESHEET
+======================= */
+@import "http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+/* Variables
+----------------------- */
+
+$lhc: $line-height-computed; // Alias
+
+/* Sticky footer styles
+----------------------- */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: $lhc * 3;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $lhc * 3;
+}
+
+/* Main Styles
+----------------------- */
+
+body {
+	font-weight: 300;
+}
+
+body > .container {
+  padding-top: $lhc * 4;
+  padding-bottom: $lhc;
+}
+
+a {
+	font-weight: 400;
+}
+
+p {
+  margin-bottom: $lhc;
+}
+
+blockquote {
+  p {
+    margin-bottom: $lhc / 2;
+  }
+}
+
+iframe {
+  margin-bottom: $lhc;
+}
+
+// http://wicky.nillia.ms/headroom.js/
+
+.headroom {
+    transition: transform 100ms linear;
+}
+.headroom--pinned {
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
+
+.navbar-brand {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  display: block;
+  height: auto;
+  opacity: 0.3;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.navbar-nav > li > a {
+	text-transform: uppercase;
+	font-size: $font-size-smaller;
+}
+
+.head {
+  margin-top: $lhc * 2;
+  margin-bottom: $lhc * 2;
+}
+
+article {
+  .thumb {
+    position: relative;
+    padding-bottom: 66.6667%;
+    background-color: #eceff1;
+    display: block;
+    color: #fff;
+  }
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .transparent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#455a64,0.3);
+  }
+  .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: $lhc $grid-gutter-width;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.home {
+  article {
+    margin-top: $lhc / 2;
+    margin-bottom: $lhc / 2;
+  }
+  a.thumb:visited {
+    color: #cfd8dc;
+  }
+}
+
+.feed {
+  article {
+    margin-bottom: $lhc * 2;
+    overflow: hidden;
+    blockquote {
+      padding-top: 0;
+      padding-left: 0;
+      border-left: 0 none;
+    }
+  }
+}
+
+.article {
+  .end {
+    margin-bottom: $lhc * 2;
+  }
+}
+
+.footer {
+  background-color: $navbar-default-bg;
+  border-top: 1px solid $navbar-default-border;
+  .credit {
+  	margin-top: $lhc;
+  	color: #cfd8dc;
+  	font-size: $font-size-smaller;
+  }
+}
+

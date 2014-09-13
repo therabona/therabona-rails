@@ -1,0 +1,8 @@
+.article
+  .row
+    .col-md-8.col-md-offset-2
+      h1.head = @article.title
+      = @article.body
+      p.end.text-muted.text-center * * *
+
+      #disqus_thread
