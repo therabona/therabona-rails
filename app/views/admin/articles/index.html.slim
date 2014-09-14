@@ -1,0 +1,22 @@
+.admin
+  .row
+    .col-sm-2.col-lg-3
+      h3.head Categories
+
+    .col-sm-8.col-lg-6
+      h3.head
+        | Articles
+        =< link_to icon("plus", "Add Article"), new_admin_article_path, class: "btn btn-sm btn-link"
+
+      ul.article-list.list-unstyled
+        - @articles.each do |article|
+          li.article
+            = link_to image_tag("http://placehold.it/100x66"), admin_article_path(article), class: "thumb pull-left"
+            .info
+              p.title = link_to article.title, article_path(article)
+              p.links
+                = link_to icon("edit", "Edit"), edit_admin_article_path(article), class: "text-muted small"
+                = link_to icon("trash-o", "Delete"), admin_article_path(article), method: :delete, class: "text-muted small"
+
+    .col-sm-2.col-lg-3
+      h3.head Pages

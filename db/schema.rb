@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20140913170329) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
-    t.string   "type"
     t.text     "body"
     t.boolean  "published",  default: false
     t.datetime "created_at"

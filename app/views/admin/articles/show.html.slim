@@ -1,0 +1,11 @@
+.article
+  .row
+    .col-sm-8.col-lg-6.col-sm-offset-2.col-lg-offset-3
+      h1.head = @article.title
+      == @article.body
+
+      hr
+      p.links
+        => link_to "Edit", edit_admin_article_path(@article), class: "btn btn-default btn-sm"
+        => link_to "Delete", admin_article_path(@article), method: :delete, class: "btn btn-default btn-sm", data: { confirm: "Are you sure?" }
+        = link_to "Back", admin_articles_path, class: "btn btn-link btn-sm"

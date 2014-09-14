@@ -32,4 +32,10 @@ gem 'slim'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 
+# WYSIWYG Editor
+gem 'summernote-rails'
+
+# server
+gem 'unicorn'
+
 

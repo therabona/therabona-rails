@@ -153,6 +153,26 @@ article {
   }
 }
 
+.admin {
+  .article-list {
+    .title {
+      margin-bottom: $lhc / 2;
+    }
+    .thumb {
+      margin-right: 15px;
+    }
+    .info {
+      overflow: hidden;
+    }
+    .links {
+      margin-bottom: 0;
+      a {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
 .footer {
   background-color: $navbar-default-bg;
   border-top: 1px solid $navbar-default-border;

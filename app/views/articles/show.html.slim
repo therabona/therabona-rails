@@ -1,8 +1,8 @@
 .article
   .row
-    .col-md-8.col-md-offset-2
+    .col-sm-8.col-lg-6.col-sm-offset-2.col-lg-offset-3
       h1.head = @article.title
-      = @article.body
+      == @article.body
       p.end.text-muted.text-center * * *
 
       #disqus_thread
