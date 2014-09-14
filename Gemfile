@@ -26,6 +26,7 @@ gem 'spring', group: :development
 
 # Use unicorn as the app server
 gem 'unicorn'
+gem 'rails_12factor', group: :production
 
 # Front-end
 gem 'slim'
@@ -34,8 +35,5 @@ gem 'font-awesome-sass'
 
 # WYSIWYG Editor
 gem 'summernote-rails'
-
-# server
-gem 'unicorn'
 
 
