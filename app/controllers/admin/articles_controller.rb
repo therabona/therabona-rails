@@ -1,5 +1,5 @@
 class Admin::ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "The Rabona", password: "TheRabona14"
+  http_basic_authenticate_with name: "therabona", password: "TheRabona14"
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
