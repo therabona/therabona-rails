@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -35,5 +35,13 @@ gem 'font-awesome-sass'
 
 # WYSIWYG Editor
 gem 'summernote-rails'
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
+gem 'cocoon'
+
+gem 'friendly_id', '~> 5.0.0'
 
 

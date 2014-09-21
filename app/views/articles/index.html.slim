@@ -8,8 +8,8 @@
       .row
         .col-sm-2.col-sm-offset-2
           = link_to article_path(article), class: "thumb" do
-            / = image_tag article.data.thumb
+            = image_tag article.attachments.first.file.medium.url unless article.attachments.empty?
             .transparent
 
         .col-sm-6
-          = article.body
+          == article.summary

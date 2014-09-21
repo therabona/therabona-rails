@@ -5,24 +5,24 @@ html lang="en"
     meta content="IE=edge" http-equiv="X-UA-Compatible"
     meta content="width=device-width, initial-scale=1" name="viewport"
 
-    / - if current_article.nil?
-    /   meta property="og:title" itemprop="name" name="twitter:title" content="The Rabona"
-    /   meta property="og:type" content="website"
-    /   meta property="og:url" content="http://therabona.com"
-    /   meta property="og:image" itemprop="image" name="twitter:image:src" content="http://therabona.com#{image_path("rabona-fb-og.jpg")}"
-    /   meta property="og:description" itemprop="description" name="description" content="The Rabona was formed as a project between four passionate football fans from Malaysia who want to see fans in Asia becoming more cultured as they learn about the global game."
-    /   meta name="twitter:description" content="The Rabona was formed as a project between four passionate football fans from Malaysia who want to see fans in Asia becoming more cultured as they learn about the global game."
-    / - else
-    /   meta property="og:title" itemprop="name" name="twitter:title" content="#{current_article.data.title} – The Rabona"
-    /   meta property="og:type" content="article"
-    /   meta property="og:url" content="http://therabona.com#{current_article.url}"
-    /   meta property="og:description" itemprop="description" name="description" content=truncate(strip_html(current_article.summary), length: 160)
-    /   meta name="twitter:description" content=truncate(strip_html(current_article.summary), length: 160)
-    /   meta property="og:image" itemprop="image" name="twitter:image:src" content="http://therabona.com#{image_path(current_article.data.thumb)}"
+    - if @article.nil?
+      meta property="og:title" itemprop="name" name="twitter:title" content="The Rabona"
+      meta property="og:type" content="website"
+      meta property="og:url" content="http://therabona.com"
+      meta property="og:image" itemprop="image" name="twitter:image:src" content=image_url("rabona-fb-og.jpg")
+      meta property="og:description" itemprop="description" name="description" content="The Rabona was formed as a project between four passionate football fans from Malaysia who want to see fans in Asia becoming more cultured as they learn about the global game."
+      meta name="twitter:description" content="The Rabona was formed as a project between four passionate football fans from Malaysia who want to see fans in Asia becoming more cultured as they learn about the global game."
+    - else
+      meta property="og:title" itemprop="name" name="twitter:title" content="#{@article.title} – The Rabona"
+      meta property="og:type" content="article"
+      meta property="og:url" content=request.url
+      meta property="og:description" itemprop="description" name="description" content=truncate(strip_tags(@article.body), length: 160)
+      meta name="twitter:description" content=truncate(strip_tags(@article.body), length: 160)
+      - if @article.attachments.exists?
+        meta property="og:image" itemprop="image" name="twitter:image:src" content=@article.attachments.first.file.large.url
 
     title The Rabona
 
-    / = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
 
@@ -33,10 +33,10 @@ html lang="en"
           button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
             span.sr-only Toggle navigation
             i.fa.fa-bars
-          a.navbar-brand href="/" = image_tag "therabona-small.png", alt: "The Rabona"
+          = link_to image_tag("therabona-small.png", alt: "The Rabona"), root_path, class: "navbar-brand"
         .collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
-            li: a href="/about.html" About Us
+            li = link_to "About Us", about_path
             li.dropdown
               a.dropdown-toggle data-toggle="dropdown" href="#series"
                 | Series
@@ -44,8 +44,8 @@ html lang="en"
               ul.dropdown-menu role="menu"
                 li: a href="#" Secret Footballer
                 li: a href="#" Asian League Review
-            li: a href="/articles/" Articles
-            li: a href="#contact" Contact
+            li = link_to "Articles", articles_path
+            li = link_to "Contact", contact_path
 
     .container
       = yield
@@ -55,48 +55,4 @@ html lang="en"
         p.credit.text-muted.text-right © 2014 The Rabona. All rights reserved.
 
     = javascript_include_tag 'application'
-
-    - unless @article.nil? || Rails.env.development?
-      javascript:
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'therabona'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-
-    javascript:
-      $(function(){
-        var header   = document.getElementById("header"),
-            headroom = new Headroom(header, {
-              offset: 44
-            });
-        headroom.init();
-
-        if ($('.summernote').length) {
-          var $summerNote = $('.summernote').first();
-
-          $summerNote.summernote({
-            height: 500,
-            toolbar: [
-              ['style', ['style']],
-              ['style', ['bold', 'italic', 'underline', 'clear']],
-              ['para', ['ul', 'ol', 'paragraph']],
-              ['insert', ['picture', 'link']],
-              ['misc', ['fullscreen', 'codeview']],
-              ['help', ['help']]
-            ]
-          });
-
-          $summerNote.code($summerNote.val());
-          $summerNote.closest('form').submit(function(){
-            $summerNote.val($summerNote.code());
-            return true;
-          });
-
-        }
-      });
 

@@ -3,7 +3,7 @@ class Admin::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.order(created_at: :desc)
   end
 
   def show
@@ -14,6 +14,10 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html { render }
+      format.js { render partial: "form", layout: false }
+    end
   end
 
   # POST /articles
@@ -45,12 +49,12 @@ class Admin::ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.friendly.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def article_params
-      params.require(:article).permit(:title, :kind, :body, :published)
+      params.require(:article).permit(:title, :kind, :body, :published, attachments_attributes: [:id, :article_id, :file, :_destroy])
     end
 
 end

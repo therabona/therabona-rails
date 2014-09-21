@@ -15,3 +15,5 @@
 //= require bootstrap
 //= require headroom
 //= require summernote
+//= require cocoon
+//= require main

@@ -4,9 +4,9 @@
       .col-sm-4
         article
           = link_to article_path(article), class: "thumb" do
-            / = image_tag article.data.thumb
+            = image_tag article.attachments.first.file.medium.url unless article.attachments.empty?
             .transparent
             p.title = article.title
 
   ul.pager
-    li: a href="articles.html" Articles →
+    li = link_to "Articles →", articles_path

@@ -6,6 +6,6 @@
 
       hr
       p.links
-        => link_to "Edit", edit_admin_article_path(@article), class: "btn btn-default btn-sm"
-        => link_to "Delete", admin_article_path(@article), method: :delete, class: "btn btn-default btn-sm", data: { confirm: "Are you sure?" }
-        = link_to "Back", admin_articles_path, class: "btn btn-link btn-sm"
+        => link_to icon("edit", "Edit"), edit_admin_article_path(@article)
+        => link_to icon("trash-o", "Delete"), admin_article_path(@article), method: :delete, confirm: "Are you sure?"
+        = link_to icon("arrow-left", "Back to Articles"), admin_articles_path, class: "pull-right"
