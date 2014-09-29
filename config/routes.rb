@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'contact' => 'pages#contact'
 
   namespace :admin do
-    resources :articles
+    resources :articles do
+      patch 'publish', on: :member
+    end
   end
 
   resources :articles

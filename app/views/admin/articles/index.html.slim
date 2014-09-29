@@ -14,7 +14,9 @@
             = link_to image_tag(article.attachments.first.file.medium.url), admin_article_path(article), class: "thumb pull-left" unless article.attachments.empty?
             .info
               p.title = link_to article.title, admin_article_path(article)
-              p.links
+              .links
+                - unless article.published
+                  = link_to icon("eye", "Publish"), publish_admin_article_path(article), method: :patch, class: "text-muted small"
                 = link_to icon("edit", "Edit"), edit_admin_article_path(article), class: "text-muted small"
                 = link_to icon("trash-o", "Delete"), admin_article_path(article), method: :delete, class: "text-muted small", confirm: "Are you sure, though?"
 

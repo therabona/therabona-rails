@@ -1,6 +1,6 @@
 class Admin::ArticlesController < ApplicationController
   http_basic_authenticate_with name: "therabona", password: "TheRabona14"
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :publish, :destroy]
 
   def index
     @articles = Article.order(created_at: :desc)
@@ -37,6 +37,14 @@ class Admin::ArticlesController < ApplicationController
       redirect_to [:admin, @article], notice: 'Article was successfully updated.'
     else
       render :edit
+    end
+  end
+
+  def publish
+    if @article.update({ published: true })
+      redirect_to admin_articles_url, notice: 'Article was successfully published.'
+    else
+      render :index
     end
   end
 

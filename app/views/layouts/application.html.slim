@@ -48,6 +48,12 @@ html lang="en"
             li = link_to "Contact", contact_path
 
     .container
+      - if flash[:notice]
+        .alert.alert-info = flash[:notice]
+
+      - if flash[:error]
+        .alert.alert-danger = flash[:error]
+
       = yield
 
     .footer
