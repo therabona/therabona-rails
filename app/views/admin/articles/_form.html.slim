@@ -26,13 +26,13 @@
 
       = link_to_add_association icon("plus", "Add Image"), f, :attachments, "data-association-insertion-node" => "#attachments", "data-association-insertion-method" => "append", class: "btn btn-link"
 
-  .form-group
-    = f.label :published, class: "col-sm-2 control-label"
-    .col-sm-8
-      .checkbox
-        label
-          => f.check_box :published
-          | Publish?
+  / .form-group
+  /   = f.label :published, class: "col-sm-2 control-label"
+  /   .col-sm-8
+  /     .checkbox
+  /       label
+  /         => f.check_box :published
+  /         | Publish?
 
   .form-group
     .col-sm-8.col-sm-offset-2

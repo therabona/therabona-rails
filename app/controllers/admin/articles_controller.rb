@@ -41,7 +41,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def publish
-    if @article.update({ published: true })
+    if @article.update({ published: true, published_at: Date.today })
       redirect_to admin_articles_url, notice: 'Article was successfully published.'
     else
       render :index
