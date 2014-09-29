@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @articles = Article.published
+    @articles = Article.published.order(:published_at)
   end
 
   def about
