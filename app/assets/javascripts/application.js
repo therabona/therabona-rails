@@ -16,4 +16,5 @@
 //= require headroom
 //= require summernote
 //= require cocoon
+//= require jquery.ajaxchimp
 //= require main

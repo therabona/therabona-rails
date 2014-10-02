@@ -5,4 +5,14 @@
       == @article.body
       p.end.text-muted.text-center * * *
 
+      .well.signup-nl
+        h4 Get updates in your inbox
+        = form_tag "//therabona.us9.list-manage.com/subscribe/post?u=bb1a372d32ef39b353956257f&amp;id=28d4d4bec7", method: :post, id: "mc-embedded-subscribe-form", class: "validate", target: "_blank", novalidate: "" do
+          .form-group
+            = text_field_tag "EMAIL", "", class: "email form-control", id: "mce-EMAIL", placeholder: "Email address"
+            = submit_tag "Subscribe", class: "btn btn-sm btn-primary"
+            p.subscribe-success.help-block.small.hide = icon("check", "We have sent you a confirmation email.")
+            p.subscribe-error.help-block.small.hide = icon("remove", "Please check your email address.")
+          <div style="position: absolute; left: -5000px;"><input type="text" name="b_bb1a372d32ef39b353956257f_28d4d4bec7" tabindex="-1" value=""></div>
+
       #disqus_thread

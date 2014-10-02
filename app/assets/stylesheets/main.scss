@@ -150,7 +150,37 @@ article {
 
 .article {
   .end {
+    margin-top: $lhc * 2;
     margin-bottom: $lhc * 2;
+  }
+}
+
+.signup-nl {
+  margin-bottom: $lhc * 2;
+  h4 {
+    margin-top: 0;
+  }
+  .form-group {
+    position: relative;
+    margin-bottom: 0;
+    .form-control {
+      height: $lhc * 2;
+    }
+    .help-block {
+      margin-top: $lhc / 2;
+      margin-bottom: 0;
+    }
+    .subscribe-success {
+      color: $brand-success;
+    }
+    .subscribe-error {
+      color: $brand-danger;
+    }
+    .btn {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+    }
   }
 }
 

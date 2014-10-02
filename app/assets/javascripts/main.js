@@ -49,11 +49,28 @@ $(function(){
     initSummernote();
   }
 
-  $(".ujs-load").on("ajax:complete", function(event, xhr, status){
-    var $target = $($(this).data("target"));
+  if ($('.signup-nl').length) {
+    var $signupForm = $('#mc-embedded-subscribe-form');
 
-    $target.html(xhr.responseText);
-    initSummernote();
-  });
+    $signupForm.ajaxChimp({
+      callback: function(response){
+        if (response.result === 'success') {
+          $signupForm.find(".subscribe-success").removeClass("hide");
+          $signupForm.find(".subscribe-error").addClass("hide");
+          $signupForm.find(".btn").prop("disabled", true);
+          $signupForm[0].reset();
+        } else {
+          $signupForm.find(".subscribe-error").removeClass("hide");
+        }
+      }
+    });
+  }
+
+  // $(".ujs-load").on("ajax:complete", function(event, xhr, status){
+  //   var $target = $($(this).data("target"));
+
+  //   $target.html(xhr.responseText);
+  //   initSummernote();
+  // });
 
 });
